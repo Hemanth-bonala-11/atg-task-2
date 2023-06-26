@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Total Blogs</title>
+    <link rel="stylesheet" href="{% static 'css/cards.css' %}">
+    <link rel="stylesheet" href="{% static './css/style.css'%}">
+    <nav>
+
+        <div class="heading">
+            <h4> Swasth Care Hospitals</h4>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/loggedout">Logout</a></li>
+
+        </ul>
+    </nav>
+</head>
+<body>
+<h1 align="center">Total Blogs</h1>
+{% for blog in blogs %}
+<div class="container">
+        <div class="card">
+            <img src="{{blog.image.url}}" alt="image not uploaded">
+            <div class="card_inside">
+                <span class="tag">{{blog.category}}</span>
+                <div class="name">{{blog.title}}</div>
+                <p>{{blog.summary}}</p>
+                <a href="/blog_page/{{blog.uniqueid}}">
+                <button>Read more</button></a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<form align="center" method="post" action="/loggedout">
+  {% csrf_token %}
+    <br>
+<input type="submit" value="Logout" name="logout" id="logout">
+  </form>
+</body>
+</html>
