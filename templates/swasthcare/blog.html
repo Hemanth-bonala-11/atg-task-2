@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Blog</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .category {
+      font-style: italic;
+      color: #999;
+      margin-left:8px;
+    }
+
+    .blog-image {
+      height:600px;
+      width:1000px
+      height: auto;
+      margin-left:20px;
+    }
+
+    .content {
+      margin-left:8px;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+    h2{
+    margin-left:8px;
+    }
+    .logout{
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: Black;
+    background-color: orange;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+
+  }
+  .logout:focus,#logout:hover{
+  background-color: #07f;
+      color: #E0EFFF;
+  }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 align="center">Blog Page</h1>
+  </header>
+{% for info in blog %}
+  <article>
+    <h2>Title:{{info.title}}</h2>
+    <p class="category">Category: {{info.category}}</p>
+    <img class="blog-image" src="{{info.image.url}}" alt="Blog Image">
+    <div class="content">
+        <p>{{info.content}}</p>
+
+    </div>
+  </article>
+{% endfor %}
+<form align="center" method="post" action="/loggedout">
+  {% csrf_token %}
+  <br>
+<input type="submit" value="Logout" name="logout" class="logout">
+  </form>
+</body>
+</html>

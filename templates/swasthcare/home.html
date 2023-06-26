@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block body %}
+<style>
+    body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .content {
+            flex-grow: 1;
+        }
+        .left-bottom,
+        .right-bottom{
+            background-color:orange;
+            font-weight:"bold";
+        }
+
+</style>
+
+<body background="{% static './images/colab.jpg'%}" id="login_form">
+<h1 id="login_button">Login</h1>
+<div class="content">
+
+    </div>
+
+   <div class="button-container">
+        <a href="/doctor_login"><button class="left-bottom">Doctor</button></a>
+        <a href="/patient_login"><button class="right-bottom">patient</button></a>
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swasth Care Hospitals</title>
+    <link rel="shortcut icon" type="image/jpg" href="{% static './images/favicon.jpg' %} "} >
+    <link rel="stylesheet" href="{% static './css/style.css'%}">
+    <nav>
+
+        <div class="heading">
+            <h4> Swasth Care Hospitals</h4>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Login</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+
+    </nav>
+</head>
+<body>
+{% block body %}
+{% endblock %}
+</body>
+
+<footer>
+    <section>
+
+    <a href="/contact" >Contact Us</a>
+       <a href="/address">Address</a>
+        <a href="/">&copy; Hemanth Bonala</a>
+    </section>
+</footer>
+</html>

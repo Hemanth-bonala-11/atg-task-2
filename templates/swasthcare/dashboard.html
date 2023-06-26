@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <title>Dashboard</title>
+  <style>
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .dashboard .field {
+      display: flex;
+      align-items: center;
+    }
+
+    .dashboard .field label {
+      font-weight: bold;
+      width: 120px;
+    }
+
+    .dashboard .field .value {
+      padding: 5px;
+    }
+
+    .dashboard .field .profile-pic {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  </style>
+  <link rel="stylesheet" href="{% static './css/style.css'%}">
+    <nav>
+
+        <div class="heading">
+            <h4> Swasth Care Hospitals</h4>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/loggedout">Logout</a></li>
+            <li><a href="/blogs">See Blogs</a></li>
+        </ul>
+    </nav>
+</head>
+<body>
+{% for detail in details %}
+<h1 align="center">{{detail.type}} Dashboard</h1>
+  <div class="dashboard">
+    <div class="field">
+      <label for="Full-name">First Name:</label>
+      <div class="value">{{detail.first_name}} {{detail.last_name}}</div>
+    </div>
+
+    <div class="field">
+      <label for="profile-pic">Profile Picture:</label>
+      <div class="value profile-pic">
+
+        <img src="{{detail.profile_pic.url}}" width="100px" alt="No Picture Uploaded">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="username">Username:</label>
+      <div class="value">{{detail.username}}</div>
+    </div>
+    <div class="field">
+      <label for="email">Email Id:</label>
+      <div class="value">{{detail.mailid}}</div>
+    </div>
+
+
+    <div class="field">
+      <label for="address-line1">Address(line1):</label>
+      <div class="value">{{detail.lane1}}</div>
+    </div>
+    <div class="field">
+      <label for="city">City:</label>
+      <div class="value">{{detail.state}}</div>
+    </div>
+    <div class="field">
+      <label for="state">State:</label>
+      <div class="value">{{detail.state}}</div>
+    </div>
+    <div class="field">
+      <label for="pincode">Pincode:</label>
+      <div class="value">{{detail.pincode}}</div>
+    </div>
+  </div>
+
+{% endfor %}
+
+
+</body>
+</html>

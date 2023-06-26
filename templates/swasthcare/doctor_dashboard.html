@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <title>Doctor Dashboard</title>
+  <style>
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .dashboard .field {
+      display: flex;
+      align-items: center;
+    }
+
+    .dashboard .field label {
+      font-weight: bold;
+      width: 120px;
+    }
+
+    .dashboard .field .value {
+      padding: 5px;
+    }
+
+    .dashboard .field .profile-pic {
+      max-width: 100px;
+      max-height: 100px;
+    }
+    .logout{
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: Black;
+    background-color: orange;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+
+  }
+  .logout:focus,#logout:hover{
+  background-color: #07f;
+      color: #E0EFFF;
+  }
+
+  </style>
+
+</head>
+<body>
+{% for  detail,draft in zipped %}
+
+<h1 align="center">{{detail.type}} Dashboard</h1>
+  <div class="dashboard">
+    <div class="field">
+      <label for="Full-name">First Name:</label>
+      <div class="value">{{detail.first_name}} {{detail.last_name}}</div>
+    </div>
+
+    <div class="field">
+      <label for="profile-pic">Profile Picture:</label>
+      <div class="value profile-pic">
+
+        <img src="{{detail.profile_pic.url}}" width="100px" alt="No Picture Uploaded">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="username">Username:</label>
+      <div class="value">{{detail.username}}</div>
+    </div>
+    <div class="field">
+      <label for="email">Email Id:</label>
+      <div class="value">{{detail.mailid}}</div>
+    </div>
+
+
+    <div class="field">
+      <label for="address-line1">Address(line1):</label>
+      <div class="value">{{detail.lane1}}</div>
+    </div>
+    <div class="field">
+      <label for="city">City:</label>
+      <div class="value">{{detail.state}}</div>
+    </div>
+    <div class="field">
+      <label for="state">State:</label>
+      <div class="value">{{detail.state}}</div>
+    </div>
+    <div class="field">
+      <label for="pincode">Pincode:</label>
+      <div class="value">{{detail.pincode}}</div>
+    </div>
+  </div>
+<h2 align="center" >Publish Blogs</h2>
+<form align="center" action="/blog_save" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <p>Username<input type="text" value="{{detail.username}}" name="username"></p>
+  <p>Title<input type="text" name="title" value="{{draft.title}}" class="inputs" required></p>
+  <p>Image<input type="file" accept="image/png,image/jpg,image/jpeg" name="image" class="inputs" required></p>
+  <p>Choose Category:
+    <select name="category" value="{{draft.category}}">
+    <option value="Mental Health">Mental Health</option>
+    <option value="Heart Disease">Heart Disease</option>
+    <option value="Covid19">Covid19</option>
+    <option value="Immunization">Immunization</option>
+  </select>
+  </p>
+  <p>Summary <input type="text" name="summary" value="{{draft.summary}}"></p>
+  <p>Content <textarea rows="7" cols="33" name="content" value="{{draft.content}}">{{draft.content}}</textarea></p>
+  <input type="submit" name="submit" value="Publish" class="logout">
+  <br>
+  <button type="submit" formaction="/saved_as_draft" class="logout">leave and save as draft</button>
+
+
+</form>
+
+{% endfor %}
+<form align="center" method="post" action="/loggedout">
+  {% csrf_token %}
+  <br>
+<input type="submit" value="Logout" name="logout" class="logout">
+  </form>
+
+</body>
+</html>

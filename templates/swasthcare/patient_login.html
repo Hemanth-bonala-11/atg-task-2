@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+
+
+
+        .login-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        #username,
+        #password {
+            width: 23%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .login-form button {
+            width: 10%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .error{
+       color:red;
+       }
+
+
+
+
+</style>
+<h1 align="center">Login as Patient</h1>
+<body>
+    <div class="login-form">
+
+        <form align="center" method="post" action="/patient_dashboard">
+            {% csrf_token %}
+            <p>
+                Username
+            <input type="text" name="Username" id="username" class="username">
+                </p>
+            <p>
+                Password
+            <input type="password" name="Password" id="password" class="password">
+                </p>
+            <button type="submit">Login</button>
+            <p>Dont Have an account ? <a href="/patient_signup">Signup</a></p>
+        </form>
+        <p align="center" class="error">{{message}}</p>
+    </div>
+
+
+</body>
+{% endblock %}
