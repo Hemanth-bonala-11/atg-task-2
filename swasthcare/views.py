@@ -221,3 +221,9 @@ def all_blogs(request):
         'blogs':blogs
     }
     return render(request,'swasthcare/all_blogs.html',context=context)
+def blogs_category(request,category):
+    blogs=Blogs.objects.filter(category=category)
+    context={
+        'blogs':blogs
+    }
+    return render(request,'swasthcare/category_blogs.html',context=context)
