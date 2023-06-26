@@ -21,5 +21,6 @@ urlpatterns=[
     path('your_published_blogs',views.see_your_blogs,name='blogs'),
     path('saved_as_draft',views.save_draft,name='draft'),
     path('blog_page/<str:uniqueid>',views.blog_page,name="blog_page"),
-    path('blogs',views.all_blogs,name="all_blogs")
+    path('blogs',views.all_blogs,name="all_blogs"),
+    path('blogs/<str:category>',views.blogs_category,name="category_blogs")
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
