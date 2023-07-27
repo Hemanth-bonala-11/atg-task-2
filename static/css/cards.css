@@ -13,6 +13,9 @@ body{
     max-width: 300px;
     margin: 0 auto;
     margin-top: 20vh;
+    margin-right: 5vh;
+    margin-left: 3vh;
+    display:inline-block;
 }
 .card{
     background-color: white;
